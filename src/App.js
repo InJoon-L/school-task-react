@@ -8,14 +8,13 @@ import Board from "./components/new/Board";
 
 function App() {
   return (
-      <div className="wrap">
+      <div>
         <Router>
           <Header />
           <Routes>
             <Route path="/" element={<Board />} />
             <Route path="/about" element={<About />} />
           </Routes>
-          <Footer />
         </Router>
       </div>
   );

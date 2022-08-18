@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
-import { data } from 'autoprefixer';
 import Tr from './Tr'
-// import Post from './Post'
-// import Modal from './Modal'
+import Post from './Post'
+import Modal from './Modal'
+import { Link } from 'react-router-dom'
 
 const Board = () => {
   let [Info, setInfo] = useState([]);
@@ -13,7 +13,7 @@ const Board = () => {
   const nextId = useRef(11);
   
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users')
+    axios.get('http://localhost:3001/user')
     .then(res => {
         setInfo(res.data);
         console.log(res.data);
@@ -75,6 +75,9 @@ const Board = () => {
   return (
     <div className='container max-w-screen-lg mx-auto'>
       <div className='text-xl font-bold mt-5 mb-3 text-center'>고객 정보 리스트</div>
+      <Link to='/about'>
+        <div className='text-xl font-bold mt-5 mb-3 text-center'>About</div>
+      </Link>
       <table className='min-w-full table-auto text-gray-800'>
         <thead className='justify-between'>
           <tr className='bg-gray-800'>
@@ -89,10 +92,10 @@ const Board = () => {
         </thead>
         <Tr info={Info} handleRemove={handleRemove} handleEdit={handleEdit} />
       </table>
-      {/* <Post onSaveData={handleSave} /> */}
-      {/* {ModalOn && <Modal 
+      <Post onSaveData={handleSave} />
+      {ModalOn && <Modal 
         selectedData={Selected} handleCancel={handleCancel}
-      handleEditSubmit={handleEditSubmit} />} */}
+      handleEditSubmit={handleEditSubmit} />}
     </div>
   );
 }
