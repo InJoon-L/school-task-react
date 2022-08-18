@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <div className="black-nav">
-      <h4>LIJBlog</h4>
-      <button className='button' style={{ float: 'right' }}>글쓰기</button>
+      <Link to="/" style={{textDecoration: 'none'}}>
+        <h4>LIJ</h4>
+      </Link>
     </div>
   )
 }
